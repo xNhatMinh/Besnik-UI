@@ -1,0 +1,637 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+html {
+  font-size: 62.5%; /* 10 px */
+  --primary-color: #0f1b4c;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Common - thành phần dùng chung */
+a {
+  text-decoration: none;
+}
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: var(--line-clamp, 2);
+  /* Mặc định là 2 nếu ko khai báo */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.btn {
+  display: inline-block; /* chuyển thành thẻ block để có chiều rộng*/
+  min-width: 98px;
+  padding: 18px 16px;
+  background: var(--primary-color);
+  border-radius: 12px;
+  font-size: 1.4 rem;
+  text-align: center;
+  color: #ffffff;
+}
+
+.content {
+  width: 1110px;
+  max-width: calc(100% - 48px);
+  /* khi độ rộng trình duyệt < 1110px sẽ không xuất hiện thanh 
+  cuộn - 48px (24px mỗi bên)*/
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ================= Header ================= */
+.fixed-header {
+  background: #e6f0ff;
+  padding-top: 26px;
+  position: sticky;
+  top: -26px; /* Để khi cuộn nó cuộn được 26px padding-top*/
+  z-index: 1; /* Độ sâu lớn hơn flow-layout để khi cuộn thẻ ko bị che khuất*/
+}
+
+.header {
+  position: relative;
+  background: #e6f0ff;
+  height: 100vh;
+}
+
+.navbar {
+  display: flex; /* Để các thẻ con nằm ngang */
+  align-items: center; /* Để các items căn giữa */
+  /* padding-top: 38px; */
+  padding: 12px 0;
+}
+
+.navbar ul {
+  display: flex; /* Để các thẻ con nằm ngang */
+  margin-left: 50px; /* Đẩy các thẻ a cách xa logo */
+}
+
+.navbar .actions {
+  margin-left: auto;
+}
+
+.navbar .action-btn {
+  padding: 13px 16px;
+  margin-left: 18px;
+  border-radius: 8px;
+}
+
+.navbar ul a {
+  /* Đi qua ul để không dính .actions */
+  font-size: 1.4rem;
+  color: #4f5361;
+  padding: 8px 14px;
+}
+
+.navbar ul a:hover {
+  text-decoration: underline;
+}
+
+.navbar .action-link {
+  font-weight: 500;
+  font-size: 1.4rem;
+  color: var(--primary-color);
+}
+
+.hero {
+  padding-top: 130px;
+}
+
+.hero .sub-title {
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.5; /* Khoảng cách giữa các dòng sẽ bằng 1.5 lần chiều cao của font chữ */
+  letter-spacing: 0.01em;
+  color: #687691;
+}
+
+.hero .title {
+  font-size: 6.2rem;
+  font-weight: 700;
+  line-height: 1.19; /* 118.75% */
+  color: #000336;
+  margin-top: 8px;
+}
+
+.hero .info {
+  width: 51%; /* 559 % 1110  */
+}
+
+.hero .desc {
+  color: #5a6473;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.8; /* 177.778% */
+  margin-top: 30px;
+}
+
+.hero-cta {
+  margin-top: 40px;
+  min-width: 170px;
+  min-height: 50px;
+}
+
+.hero-img {
+  position: absolute;
+  right: calc((100vw - 1110px) / 2 - 100px);
+  bottom: 0px;
+}
+
+/* ================= Clients ================= */
+.clients {
+  margin-top: 79px;
+  padding: 43px 0 64px;
+}
+
+.clients .row {
+  display: flex;
+  justify-content: space-between; /* Đưa các thẻ con xa nhau nhất có thể */
+}
+
+.clients .desc {
+  color: #7d8589;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.25; /* 125% */
+}
+
+.clients .row-desc {
+  margin-top: 23px;
+}
+
+.clients .images {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 96px;
+}
+
+/* ================= Guides ================= */
+
+.guides {
+  margin-top: 40px;
+  padding: 93px 0px 79px;
+}
+
+.guides .sub-title {
+  position: relative;
+  color: #000339;
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.guides .sub-title::before {
+  position: absolute;
+  transform: translateX(-50%);
+  /*chạy ngược lại bằng 1 nửa */
+  left: 50%;
+  /* Dịch sang trái 50% độ rộng thẻ cha*/
+  top: -10px;
+  content: "";
+  display: inline-block;
+  width: 41px;
+  height: 4px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #000339;
+}
+
+.guides .desc {
+  margin: 20px auto 0;
+  color: #5a6473;
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.8; /* 177.778% */
+  width: 459px;
+  max-width: 100%;
+}
+
+.list-guide {
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+}
+
+.guide-item {
+  margin: 0 70px;
+  text-align: center;
+}
+
+.guide-item .title {
+  margin-top: 26px;
+  color: #3b3c45;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.1; /* 110% */
+}
+
+.guide-item .link {
+  display: inline-block;
+  color: #0689ff;
+  margin-top: 10px;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.guide-item .arrow {
+  margin-left: 6px;
+}
+
+.guide-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.guide-cta .btn {
+  min-width: 170px; /* Để ko bị phình ra khi có thêm chữ */
+}
+
+/* ================= Featured ================= */
+
+.featured {
+  margin-top: 41px;
+  padding: 110px 0;
+  background: #f5fafe;
+}
+
+.featured .sub-title {
+  color: #000339;
+  font-size: 3.5rem;
+  font-weight: 600;
+  line-height: 1; /* 100% */
+}
+
+.featured .row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.featured .desc {
+  color: #5a6473;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.87; /* 187.5% */
+}
+
+.featured .link {
+  display: flex;
+  align-items: center;
+  color: #0689ff;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.featured .link .arrow {
+  margin-left: 8px;
+}
+
+.featured .list {
+  display: flex;
+  gap: 30px;
+  margin-top: 70px;
+}
+
+.featured .item {
+  flex: 1; /* độ rộng của thẻ cha chia đều cho thẻ con*/
+  background: white;
+  border-radius: 12px;
+}
+
+.featured .item .thumb {
+  width: 100%; /*chiếm toàn bộ chiều rộng của phần tử cha chứa nó.*/
+  height: 227px;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.featured .item .body {
+  padding: 17px 20px 24px;
+}
+
+.featured .item .title a {
+  color: #000339;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1; /* 100% */
+}
+
+.featured .item .desc {
+  color: #a3a6ab;
+  font-family: Poppins;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-top: 11px;
+}
+
+.featured .item .info {
+  margin-top: 21px;
+  display: flex;
+  align-items: center;
+}
+
+.featured .item .label {
+  margin-left: 8px;
+  color: #444;
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 14px; /* 100% */
+}
+
+.featured .item .icon {
+  margin-left: 23px;
+}
+
+.featured .item .icon:first-child {
+  margin-left: 0;
+}
+
+/* ================= Stats ================= */
+
+.stats {
+  margin-top: 75px;
+  padding: 50px 0;
+}
+
+.stats .row {
+  display: flex;
+}
+
+.stats .img-block,
+.stats .info {
+  width: 50%;
+}
+
+.stats-trend {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0px 0px 12px 12px;
+  width: 239px;
+  background: #fff;
+  padding: 45px 22px 40px 22px;
+}
+
+.stats-trend .value {
+  color: #000339;
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1; /* 100% */
+  letter-spacing: 0.26px;
+}
+
+.stats .img-block {
+  position: relative;
+}
+
+.stats .info {
+  padding: 79px 0 0 165px;
+}
+
+.stats .img-block .image {
+  display: block;
+  object-fit: cover;
+  width: 400px;
+  height: 460px;
+  border-radius: 12px;
+  margin-left: auto;
+}
+
+.stats-trend .icon {
+  margin-left: auto;
+}
+
+.stats-trend .desc {
+  color: #a7a7a7;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.5; /* 150% */
+}
+
+.stats-trend .separate {
+  height: 1.2px;
+  background: #e9e9e9;
+  margin-top: 25px;
+}
+
+.stats .sub-title {
+  position: relative;
+  width: 269px;
+  color: #000339;
+  font-size: 3.5rem;
+  font-weight: 600;
+  line-height: 1.3; /* 128.571% */
+}
+
+.stats .sub-title::before {
+  position: absolute;
+  top: -10px;
+  content: "";
+  display: block;
+  width: 44.749px;
+  height: 4.286px;
+  left: 0;
+  background: #000339;
+}
+
+.stats .info .desc {
+  margin-top: 20px;
+  width: 337px;
+  color: #5a6473;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.87; /* 187.5% */
+}
+
+.stats .avatar-block {
+  margin-top: 26px;
+  display: flex;
+  gap: 16px 14px;
+  flex-wrap: wrap;
+}
+
+.stats .avatar-group {
+  display: flex;
+}
+
+.stats .avatar {
+  width: 16px;
+  height: 16px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: -3px;
+}
+
+.stats .avatar:first-child {
+  margin-left: 0;
+}
+
+.stats .avatar-block {
+  display: flex;
+  margin-top: 26px;
+}
+
+.stats .row-qty {
+  margin-top: 110px;
+  justify-content: space-between;
+  padding: 0 32px;
+}
+
+.stats .qty {
+  color: #000;
+  font-size: 64px;
+  font-weight: 600;
+  line-height: 1; /* 100% */
+}
+
+.stats .qty-desc {
+  color: #7b8087;
+  margin-top: 24px;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+/* ================= Subscription ================= */
+
+.subcription {
+  margin-top: 90px;
+}
+
+.subcription .body {
+  position: relative; /* để căn ảnh có ngôi nhà*/
+  align-items: center;
+  display: flex;
+  height: 370px;
+  border-radius: 20px;
+  background: #063183;
+}
+
+.subcription .info {
+  width: 671px; /* giới hạn nội dung để ko chọc qua ảnh */
+  padding: 0 80px;
+}
+
+.subcription .sub-title {
+  color: #fff;
+  font-size: 3.5rem;
+  font-weight: 600;
+  line-height: 1.5; /* giãn ra để khi thêm từ nó sẽ xuống dòng */
+}
+
+.subcription .desc {
+  margin-top: 15px;
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.88; /* 187.5% */
+  opacity: 0.75;
+}
+
+.subcription .btn {
+  margin-top: 20px;
+  min-width: 151;
+  background: #fff;
+  color: #002366;
+}
+
+.subcription .image {
+  position: absolute;
+  bottom: 0;
+  right: 221px;
+}
+
+/* Footer */
+.footer {
+  margin-top: 55px;
+  padding: 50px 0 58px;
+}
+
+.footer .row {
+  display: flex;
+}
+
+.footer .row-top {
+  column-gap: 185px;
+}
+
+.footer .heading {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #1c1c1d;
+}
+
+.footer .list,
+.footer .desc {
+  margin-top: 42px;
+}
+
+.footer .item {
+  margin-top: 18px;
+}
+
+.footer .item a,
+.footer .desc {
+  font-weight: 400;
+  font-size: 1.6rem;
+  color: #7a7a7e;
+  white-space: nowrap;
+}
+
+.footer .desc {
+  white-space: normal;
+  line-height: 1.75;
+}
+
+.footer .social {
+  display: flex;
+  margin-top: 40px;
+}
+
+.footer .social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 3px;
+  background: #f9f9f9;
+}
+
+.footer .social-link + .social-link {
+  margin-left: 16px;
+}
+
+.footer .social-link:hover {
+  background: #ebebeb;
+}
+
+.footer .row-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 81px;
+}
+
+.footer .copyright {
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: #c2c2c2;
+}
